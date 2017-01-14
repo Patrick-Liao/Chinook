@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/chinookTest1.dir/main.cpp.o  -o chinookTest1 
