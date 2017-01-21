@@ -200,7 +200,6 @@ public:
     }
 
 private:
-    frc::LiveWindow* lw = LiveWindow::GetInstance();
     double speedLimit = 0.8;
 };
 
