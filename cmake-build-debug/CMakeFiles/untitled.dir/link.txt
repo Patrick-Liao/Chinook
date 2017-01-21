@@ -1,1 +1,1 @@
-/usr/bin/arm-frc-linux-gnueabi-g++    -g -Wall -W -std=c++11 -fPIC -g  /home/explorer/wpilib/cpp/current/lib -lwpi CMakeFiles/untitled.dir/src/ChinookTest.cpp.o  -o untitled 
+/usr/bin/arm-frc-linux-gnueabi-g++    -g -Wall -W -I/home/explorer/wpilib/cpp/current/include -std=c++11 -fPIC -g   CMakeFiles/untitled.dir/src/ChinookTest.cpp.o  -o untitled 

@@ -9,14 +9,12 @@
 #include <memory>
 #include <string>
 
-#include <IterativeRobot.h>
-#include <LiveWindow/LiveWindow.h>
-#include <SmartDashboard/SendableChooser.h>
-#include <SmartDashboard/SmartDashboard.h>
+#include "WPILib.h"
+#include "IterativeRobot.h"
+#include "LiveWindow/LiveWindow.h"
+#include "DriverStation.h"
+#include "RobotDrive.h"
+#include "Victor.h"
+#include "Joystick.h"
 
-class ChinookTest {
-
-};
-
-
-#endif //CHINOOKTEST1_CHINOOKTEST_H
+#endif /*CHINOOKTEST1_CHINOOKTEST_H*/

@@ -10,14 +10,14 @@ set(CMAKE_CXX_COMPILER /usr/bin/arm-frc-linux-gnueabi-g++)
 # Include C++ headers files for WPILib
 include_directories($ENV{HOME}/wpilib/cpp/current/include)
 
-# # Set include header files path
-# set(INCDIR "-I$ENV{HOME}/wpilib/cpp/current/include")
+ # Set include header files path
+ set(INCDIR "-I$ENV{HOME}/wpilib/cpp/current/include")
 
 # Set C++ Flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -W -std=c++11 -fPIC") # change: remove ${INCDIR}
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -W ${INCDIR} -std=c++11 -fPIC") # change: remove ${INCDIR}
 
 # Set LFLAGS
-set(CMAKE_EXE_LINKER_FLAGS "$ENV{HOME}/wpilib/cpp/current/lib -lwpi")
+#set(CMAKE_EXE_LINKER_FLAGS "$ENV{HOME}/wpilib/cpp/current/lib -lwpi")
 
 # Set source files path
 set(SOURCE_FILES src/ChinookTest.cpp)
