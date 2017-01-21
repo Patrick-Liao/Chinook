@@ -115,6 +115,31 @@ void setOpState() {
     }
 }
 
+void resetOpState() {
+    OpState.jsIsAButtonPressed = false;
+    OpState.gpIsBButtonPressed = false;
+    OpState.gpIsXButtonPressed = false;
+    OpState.jsIsYButtonPressed = false;
+    OpState.gpIsLeftBumperPressed = false;
+    OpState.gpIsRightBumperPressed = false;
+    OpState.gpIsBackPressed = false;
+    OpState.gpIsStartPressed = false;
+    OpState.jsIsLeftStickDown = false;
+    OpState.gpIsRightStickDown = false;
+    OpState.jsIsTriggered = false;
+
+    // axis
+    OpState.jsLeftStickX = .0;
+    OpState.jsLeftStickY = .0;
+    OpState.gpLeftTrigger = .0;
+    OpState.gpRightTrigger = .0;
+    OpState.gpRightStickX = .0;
+    OpState.gpRightStickY = .0;
+
+    // DPAD
+    OpState.gpDpad = -1.0;
+}
+
 class DriveTrain {
 public:
 
