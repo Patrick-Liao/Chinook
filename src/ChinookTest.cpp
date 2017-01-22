@@ -154,7 +154,7 @@ public:
 
     void arcadeDrive(double x, double y) {
 
-        drive->ArcadeDrive(-(std::abs(y) >= speedLimit ? ((y < 0) ? -1 : 1) * speedLimit : y),
+        drive->ArcadeDrive(-(std::abs(y) >= speedLimit ? (y/std::abs(y)) * speedLimit : y),
                            -(((std::abs(std::abs(y) >= 0.5 ? x * 0.6 : x)) >= speedLimit) ?
                                    (((std::abs(y) >= 0.5 ? x * 0.6 : x) < 0) ? -1 : 1) * speedLimit :
                                    (std::abs(y) >= 0.5 ? x * 0.6 : x)));
