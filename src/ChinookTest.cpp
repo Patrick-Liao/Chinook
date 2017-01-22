@@ -153,11 +153,10 @@ public:
     }
 
     void arcadeDrive(double x, double y) {
-
-        drive->ArcadeDrive(-(y/std::abs(y)) * (speedLimit > std::abs(y) ? speedLimit : std::abs(y))),
-                           -(((std::abs(std::abs(y) >= 0.5 ? x * 0.6 : x)) >= speedLimit) ?
-                                   (((std::abs(y) >= 0.5 ? x * 0.6 : x) < 0) ? -1 : 1) * speedLimit :
-                                   (std::abs(y) >= 0.5 ? x * 0.6 : x)));
+        int sign = y/std::abs(y);
+        y = std::abs(y);
+        drive->ArcadeDrive(-(sign) * (speedLimit > y ? speedLimit : y)),
+                -(((std::abs(y >= 0.5 ? x * 0.6 : x)) >= speedLimit) ? (x/std::abs(x) ? -1 : 1) * speedLimit : (y >= 0.5 ? x * 0.6 : x)));
     }
 
     void tankDrive(double left, double right) {
