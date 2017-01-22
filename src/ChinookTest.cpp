@@ -1,5 +1,6 @@
 
 #include "ChinookTest.h"
+const static double global_speed_limit = 0.8;
 
 enum {
     // wheels
@@ -69,14 +70,14 @@ struct {
 
 void setOpState() {
     try {
-        Joystick *gamepad = new Joystick(GamepadPort);
-        Joystick *joystick = new Joystick(JoystickPort);
+        Joystick gamepad(GamepadPort);
+        Joystick joystick(JoystickPort);
 
-        joystick->SetAxisChannel(Joystick::kTwistAxis, LeftStickX);
-        gamepad->SetAxisChannel(Joystick::kXAxis, RightStickX);
-        gamepad->SetAxisChannel(Joystick::kYAxis, RightStickY);
+        joystick.SetAxisChannel(Joystick::kTwistAxis, LeftStickX);
+        gamepad.SetAxisChannel(Joystick::kXAxis, RightStickX);
+        gamepad.SetAxisChannel(Joystick::kYAxis, RightStickY);
 
-        switch (joystick->GetPOV()) {
+        switch (joystick.GetPOV()) {
             case 100:
                 OpState.jsIsAButtonPressed = true;
                 break;
@@ -89,30 +90,28 @@ void setOpState() {
                 OpState.jsIsYButtonPressed = false;
         }
 
-        OpState.gpIsBButtonPressed = gamepad->GetRawButton(GamepadBButton);
-        OpState.gpIsXButtonPressed = gamepad->GetRawButton(GamepadXButton);
-        OpState.gpIsLeftBumperPressed = gamepad->GetRawButton(GamepadLeftBumper);
-        OpState.gpIsRightBumperPressed = gamepad->GetRawButton(GamepadRightBumper);
-        OpState.gpIsBackPressed = gamepad->GetRawButton(GamepadBack);
-        OpState.gpIsStartPressed = gamepad->GetRawButton(GamepadStart);
-        OpState.jsIsLeftStickDown = joystick->GetRawButton(JoystickLeftStickDown);
-        OpState.gpIsRightStickDown = gamepad->GetRawButton(GamepadRightStickDown);
-        OpState.jsIsTriggered = joystick->GetRawButton(JoystickTrigger);
+        OpState.gpIsBButtonPressed = gamepad.GetRawButton(GamepadBButton);
+        OpState.gpIsXButtonPressed = gamepad.GetRawButton(GamepadXButton);
+        OpState.gpIsLeftBumperPressed = gamepad.GetRawButton(GamepadLeftBumper);
+        OpState.gpIsRightBumperPressed = gamepad.GetRawButton(GamepadRightBumper);
+        OpState.gpIsBackPressed = gamepad.GetRawButton(GamepadBack);
+        OpState.gpIsStartPressed = gamepad.GetRawButton(GamepadStart);
+        OpState.jsIsLeftStickDown = joystick.GetRawButton(JoystickLeftStickDown);
+        OpState.gpIsRightStickDown = gamepad.GetRawButton(GamepadRightStickDown);
+        OpState.jsIsTriggered = joystick.GetRawButton(JoystickTrigger);
 
         // Axis
-        OpState.jsLeftStickX = joystick->GetRawAxis(LeftStickX);
-        OpState.jsLeftStickY = joystick->GetRawAxis(RightStickY);
-        OpState.gpLeftTrigger = gamepad->GetRawAxis(LeftTrigger);
-        OpState.gpRightTrigger = gamepad->GetRawAxis(RightTrigger);
-        OpState.gpRightStickX = gamepad->GetRawAxis(RightStickX);
-        OpState.gpRightStickY = gamepad->GetRawAxis(RightStickY);
+        OpState.jsLeftStickX = joystick.GetRawAxis(LeftStickX);
+        OpState.jsLeftStickY = joystick.GetRawAxis(RightStickY);
+        OpState.gpLeftTrigger = gamepad.GetRawAxis(LeftTrigger);
+        OpState.gpRightTrigger = gamepad.GetRawAxis(RightTrigger);
+        OpState.gpRightStickX = gamepad.GetRawAxis(RightStickX);
+        OpState.gpRightStickY = gamepad.GetRawAxis(RightStickY);
 
         // DPAD
 
-        OpState.gpDpad = (joystick->GetRawButton(MaxPower)) ? 0 : -1;
-        
-        delete joystick;
-        delete gamepad;
+        OpState.gpDpad = (joystick.GetRawButton(MaxPower)) ? 0 : -1;
+
     } catch(int exception) {
         std::cout << "Chinook: setOpState() caught Exception:" << exception << std::endl;
     }
@@ -145,92 +144,123 @@ void resetOpState() {
 
 class DriveTrain {
 public:
+    /**
+     * Constructor for DriveTrain
+     * @param speedLimit double The Speed Limit
+     */
+    explicit DriveTrain(double speedLimit) : speedLimit(speedLimit),
+                                    leftFront(LeftPortFront),
+                                    leftBack(LeftPortBack),
+                                    rightFront(RightPortFront),
+                                    rightBack(RightPortBack),
+                                    drive(leftFront, leftBack, rightFront, rightBack) {}
 
-    DriveTrain(double speedLimit) {
-        this->speedLimit = speedLimit;
-        leftFront = new Victor(LeftPortFront);
-        leftBack = new Victor(LeftPortBack);
-        rightFront = new Victor(RightPortFront);
-        rightBack = new Victor(RightPortBack);
-        drive = new RobotDrive(leftFront, leftBack, rightFront, rightBack);
-    }
+    /**
+     * ArcadeDrive method
+     * @param x double rotation
+     * @param y double drive
+     */
+    void ArcadeDrive(double x, double y) { drive.ArcadeDrive(-limitSpeed(y), -(limitSpeed(std::abs(y) >= 0.5 ? x * 0.6 : x))); }
 
-    ~DriveTrain() {
-        delete leftFront;
-        delete leftBack;
-        delete rightFront;
-        delete rightBack;
-        delete drive;
-    }
-    
-    double limitSpeed(double a) { return a/std::abs(a) * (std::abs(a) > speedLimit ? speedLimit : std::abs(a)); }
-    
-    void arcadeDrive(double x, double y) {
-        drive->ArcadeDrive(-limitSpeed(y)), -(limitSpeed(std::abs(y) >= 0.5 ? x * 0.6 : x));
-    }
+    /**
+     * TankDrive method
+     * @param left double left-stick
+     * @param right double right-stick
+     */
+    void TankDrive(double left, double right) { drive.TankDrive(limitSpeed(left), limitSpeed(right)); }
 
-    void tankDrive(double left, double right) {
-        drive->TankDrive(limitSpeed(left), limitSpeed(right));
-    }
+    /**
+     * Updates the speed limit
+     * @param speedLimit double renews speed limit to a new one
+     */
+    void update(double speedLimit) { this->speedLimit = speedLimit; }
 
-    void update(double speedLimit) {
-        this->speedLimit = speedLimit;
-    }
-
-    void increaseBy(double speedLimit) {
-        this->speedLimit += speedLimit;
-    }
-
-    void decreaseBy(double speedLimit) {
-        this->speedLimit -= speedLimit;
+    /**
+     * Change by a speed limit
+     * @param speedLimit  double increases/decreases speedLimit
+     */
+    void changeBy(double speedLimit) {
+        this->speedLimit += ((this->speedLimit + speedLimit > 1.0000000001) ||
+                (this->speedLimit + speedLimit < -0.0000000001) ) ? 0: speedLimit;
+        DriverStation::ReportWarning("\rNewSpeedLimit" + std::to_string(this->speedLimit) + "     ");
+        std::cout << "New Limit: " << this->speedLimit << std::endl;
     }
 
 private:
     double speedLimit;
-    Victor *leftFront;
-    Victor *leftBack;
-    Victor *rightFront;
-    Victor *rightBack;
-    RobotDrive *drive;
+    Victor leftFront, leftBack, rightFront, rightBack;
+    RobotDrive drive;
+
+    /**
+     * The devised algorithm for limiting the speed.
+     * @param a
+     * @return
+     */
+    double limitSpeed(double a) { return a/std::abs(a) * (std::abs(a) > speedLimit ? speedLimit : std::abs(a)); }
+
 };
 
 class Robot: public frc::IterativeRobot {
 public:
 
-    DriveTrain *drive;
+    DriveTrain drive;
 
-    void RobotInit() {
-        std::cout << "Chinook: RobotInit" << std::endl;
-        drive = new DriveTrain(speedLimit);
+    Robot() : drive( global_speed_limit ) {}
+
+    /**
+     * @Override
+     */
+    void RobotInit()  {
+        std::cout << "Chinook: RobotInit VER 0.3" << std::endl;
     }
 
+    /**
+     * @Override
+     */
     void AutonomousInit() override {
         std::cout << "Chinook: Called AutonomousInit\nChinook: Warning: Autonomous is yet to be implemented." << std::endl;
     }
 
+    /**
+     * @Override
+     */
     void AutonomousPeriodic() {
         std::cout << "Chinook: Called AutonomousPeriodic" << std::endl;
     }
 
+    /**
+     * @Override
+     */
     void TeleopInit() {
         std::cout << "Chinook: Called TeleopInit" << std::endl;
 
     }
 
+    /**
+     * @Override
+     */
     void TeleopPeriodic() {
-        std::cout << "Chinook: Called TeleopPeriodic" << std::endl;
+       // std::cout << "Chinook: Called TeleopPeriodic" << std::endl;
         setOpState();
-        if(OpState.gpIsRightBumperPressed) drive->increaseBy(0.1);
-        if(OpState.gpIsLeftBumperPressed) drive->decreaseBy(0.1);
-        drive->arcadeDrive(OpState.gpRightStickX, OpState.gpRightStickY);
+        if(OpState.gpIsRightBumperPressed) {
+            drive.changeBy(0.01);
+        }
+        if(OpState.gpIsLeftBumperPressed) {
+            drive.changeBy(-0.01);
+        }
+        drive.ArcadeDrive(OpState.gpRightStickX, OpState.gpRightStickY);
     }
 
+    /**
+     * @Override
+     */
     void TestPeriodic() {
         std::cout << "Chinook: Called TestPeriodic()\nChinook: TestPeriodic is not implemented." << std::endl;
     }
 
+
 private:
-    double speedLimit = 0.8;
+
 };
 
 START_ROBOT_CLASS(Robot)

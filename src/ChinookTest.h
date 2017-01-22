@@ -16,5 +16,6 @@
 #include "RobotDrive.h"
 #include "Victor.h"
 #include "Joystick.h"
+#include "HAL/HAL.h"
 
 #endif /*CHINOOKTEST1_CHINOOKTEST_H*/

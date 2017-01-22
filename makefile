@@ -31,6 +31,7 @@ OBJECTS = $(patsubst src/%.cpp,src/%.o,$(wildcard src/*.cpp))
 all: $(OBJECTS)
 	test -d bin/ || mkdir -p bin/
 	$(CXX) $(CPPFLAGS) $(OBJECTS) $(LFLAGS) -o bin/FRCUserProgram
+	echo 'build complete.\n'
 clean:
 	@for dir in src; do find $$dir -name \*.o -exec $(RMCOMMAND) {} \; ; done
 	$(RMCOMMAND) bin/*
