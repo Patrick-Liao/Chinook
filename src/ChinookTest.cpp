@@ -219,8 +219,7 @@ public:
     }
 
     void TestPeriodic() {
-        std::cout << "Chinook: Called TestPeriodic()" << std::endl;
-        std::cout << "Chinook: TestPeriodic is not implemented." << std::endl;
+        std::cout << "Chinook: Called TestPeriodic()" << std::endl << "Chinook: TestPeriodic is not implemented." << std::endl;
     }
 
 private:
