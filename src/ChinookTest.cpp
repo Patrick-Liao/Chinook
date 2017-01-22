@@ -110,6 +110,9 @@ void setOpState() {
         // DPAD
 
         OpState.gpDpad = (joystick->GetRawButton(MaxPower)) ? 0 : -1;
+        
+        delete joystick;
+        delete gamepad;
     } catch(int exception) {
         std::cout << "Chinook: setOpState() caught Exception:" << exception << std::endl;
     }
@@ -152,6 +155,14 @@ public:
         drive = new RobotDrive(leftFront, leftBack, rightFront, rightBack);
     }
 
+    ~DriveTrain() {
+        delete leftFront;
+        delete leftBack;
+        delete rightFront;
+        delete rightBack;
+        delete drive;
+    }
+    
     void arcadeDrive(double x, double y) {
         int sign = y/std::abs(y);
         y = std::abs(y);
@@ -178,7 +189,6 @@ public:
 
 private:
     double speedLimit;
-    double speedBool;
     Victor *leftFront;
     Victor *leftBack;
     Victor *rightFront;
