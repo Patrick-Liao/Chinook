@@ -197,8 +197,7 @@ public:
     }
 
     void AutonomousInit() override {
-        std::cout << "Chinook: Called AutonomousInit" << std::endl;
-        std::cout << "Chinook: Warning: Autonomous is yet to be implemented." << std::endl;
+        std::cout << "Chinook: Called AutonomousInit\nChinook: Warning: Autonomous is yet to be implemented." << std::endl;
     }
 
     void AutonomousPeriodic() {
@@ -219,7 +218,7 @@ public:
     }
 
     void TestPeriodic() {
-        std::cout << "Chinook: Called TestPeriodic()" << std::endl << "Chinook: TestPeriodic is not implemented." << std::endl;
+        std::cout << "Chinook: Called TestPeriodic()\nChinook: TestPeriodic is not implemented." << std::endl;
     }
 
 private:
