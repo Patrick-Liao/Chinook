@@ -163,16 +163,14 @@ public:
         delete drive;
     }
     
+    double limitSpeed(double a) { return a/std::abs(a) * std::abs(a) > speedLimit ? speedLimit : std::abs(a); }
+    
     void arcadeDrive(double x, double y) {
-        int sign = y/std::abs(y);
-        y = std::abs(y);
-        drive->ArcadeDrive(-(sign) * (speedLimit > y ? speedLimit : y)),
-                -(((std::abs(y >= 0.5 ? x * 0.6 : x)) >= speedLimit) ? (x/std::abs(x) ? -1 : 1) * speedLimit : (y >= 0.5 ? x * 0.6 : x)));
+        drive->ArcadeDrive(-limitSpeed(y)), -(limitSpeed(std::abs(y) >= 0.5 ? x * 0.6 : x));
     }
 
     void tankDrive(double left, double right) {
-        drive->TankDrive(((left >= speedLimit) ? speedLimit: left),
-                         ((right >= speedLimit) ? speedLimit : right));
+        drive->TankDrive(limitSpeed(left), limitSpeed(right));
     }
 
     void update(double speedLimit) {
