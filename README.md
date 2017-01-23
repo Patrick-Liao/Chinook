@@ -1,5 +1,8 @@
 ![Build Status](https://travis-ci.org/LSRobotics/Chinook.svg?branch=master)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/LSRobotics/public?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
+[![Issue Count](https://codeclimate.com/github/LSRobotics/Chinook/badges/issue_count.svg)](https://codeclimate.com/github/LSRobotics/Chinook)
+[![Code Climate](https://codeclimate.com/github/LSRobotics/Chinook/badges/gpa.svg)](https://codeclimate.com/github/LSRobotics/Chinook)
+
 <br>
 
 ![chinook_copter](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/CH-47_Chinook_helicopter_flyby.jpg/1280px-CH-47_Chinook_helicopter_flyby.jpg)
