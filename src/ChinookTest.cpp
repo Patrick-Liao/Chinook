@@ -182,7 +182,7 @@ public:
     void ChangeBy(double speedLimit) {
         this->speedLimit += ((this->speedLimit + speedLimit > 1.0000000001) ||
                 (this->speedLimit + speedLimit < -0.0000000001) ) ? 0: speedLimit;
-        DriverStation::ReportWarning("\rNewSpeedLimit" + std::to_string(this->speedLimit) + "     ");
+        reportMsg("\rNewSpeedLimit" + std::to_string(this->speedLimit) + "     ");
         std::cout << "New Limit: " << this->speedLimit << std::endl;
     }
 
@@ -258,5 +258,10 @@ public:
 private:
 
 };
+
+void reportMsg(string msg){
+    const char *ca = msg.c_str();
+    FRC_NetworkCommunication_sendConsoleLine(const char *line);
+}
 
 START_ROBOT_CLASS(Robot)
