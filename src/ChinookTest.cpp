@@ -1,6 +1,14 @@
 
 #include "ChinookTest.h"
+
+/* settings */
 const static double global_speed_limit = 0.8;
+
+
+/* utils */
+void reportMsg(string msg){
+    FRC_NetworkCommunication_sendConsoleLine(msg.c_str());
+}
 
 enum {
     // wheels
@@ -259,9 +267,6 @@ private:
 
 };
 
-void reportMsg(string msg){
-    const char *ca = msg.c_str();
-    FRC_NetworkCommunication_sendConsoleLine(const char *line);
-}
+
 
 START_ROBOT_CLASS(Robot)
