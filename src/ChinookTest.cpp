@@ -242,12 +242,8 @@ public:
     void TeleopPeriodic() {
        // std::cout << "Chinook: Called TeleopPeriodic" << std::endl;
         setOpState();
-        if(OpState.gpIsRightBumperPressed) {
-            drive.changeBy(0.01);
-        }
-        if(OpState.gpIsLeftBumperPressed) {
-            drive.changeBy(-0.01);
-        }
+        if(OpState.gpIsRightBumperPressed) drive.changeBy(0.01);
+        if(OpState.gpIsLeftBumperPressed) drive.changeBy(-0.01);
         drive.ArcadeDrive(OpState.gpRightStickX, OpState.gpRightStickY);
     }
 
