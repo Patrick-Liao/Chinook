@@ -1,7 +1,9 @@
+[![Maintenance](https://img.shields.io/maintenance/yes/2017.svg?style=flat-square)](https://github.com/LSRobotics/Chinook)
 ![Build Status](https://travis-ci.org/LSRobotics/Chinook.svg?branch=master)
-[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/LSRobotics/public?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 [![Issue Count](https://codeclimate.com/github/LSRobotics/Chinook/badges/issue_count.svg)](https://codeclimate.com/github/LSRobotics/Chinook)
 [![Code Climate](https://codeclimate.com/github/LSRobotics/Chinook/badges/gpa.svg)](https://codeclimate.com/github/LSRobotics/Chinook)
+[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/LSRobotics/public?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
+
 
 <br>
 
