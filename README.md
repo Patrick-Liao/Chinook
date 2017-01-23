@@ -1,4 +1,6 @@
-# Chinook
+![chinook_copter](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/CH-47_Chinook_helicopter_flyby.jpg/1280px-CH-47_Chinook_helicopter_flyby.jpg)
+<br>Source: Wikipedia article: Chinook.
+# Chinook [![Build Status](https://travis-ci.org/thefangbear/Chinook.svg?branch=master)](https://travis-ci.org/thefangbear/Chinook)
 2017 Robot.
 
 ## To contribute

@@ -1,0 +1,17 @@
+addons:
+  apt:
+    sources:
+    - deadsnakes
+    - sourceline: 'ppa:wpilib/toolchain'
+    packages:
+    - frc-toolchain
+    - build-essential
+    - cmake
+
+
+before_script:
+ - git clone https://github.com/managra/travis_wpilib_mirror.git ~/wpilib
+
+script:
+ - make all
+ 
