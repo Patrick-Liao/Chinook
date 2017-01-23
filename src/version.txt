@@ -2,3 +2,4 @@
 v0.1 - first release
 v0.2 - improvements in bumper-increase-speed methods
 v0.3 - double precision problem bugfix and +-0.01 for increased precision
+v0.4 - large camel for public methods, small camel for private methods
