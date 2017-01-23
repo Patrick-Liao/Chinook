@@ -17,5 +17,6 @@
 #include "Victor.h"
 #include "Joystick.h"
 #include "HAL/HAL.h"
+#include "FRC_NetworkCommunications.h"
 
 #endif /*CHINOOKTEST1_CHINOOKTEST_H*/
