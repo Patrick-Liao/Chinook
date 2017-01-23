@@ -219,7 +219,7 @@ public:
      * @Override
      */
     void RobotInit()  {
-        std::cout << "Chinook: RobotInit VER 0.3" << std::endl;
+        std::cout << "Chinook: RobotInit VER " << VERSION << std::endl;
     }
 
     /**
