@@ -5,6 +5,8 @@
 #ifndef CHINOOKTEST1_CHINOOKTEST_H
 #define CHINOOKTEST1_CHINOOKTEST_H
 
+#define VERSION 0.5
+
 #include <iostream>
 #include <memory>
 #include <string>
@@ -18,5 +20,7 @@
 #include "Joystick.h"
 #include "HAL/HAL.h"
 #include "FRC_NetworkCommunication/FRCComm.h"
+
+
 
 #endif /*CHINOOKTEST1_CHINOOKTEST_H*/
