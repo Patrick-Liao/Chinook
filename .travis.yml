@@ -10,7 +10,7 @@ addons:
 
 
 before_script:
- - git clone https://github.com/managra/travis_wpilib_mirror.git ~/
+ - git clone https://github.com/managra/travis_wpilib_mirror.git ~/wpilib
 
 script:
  - make all
