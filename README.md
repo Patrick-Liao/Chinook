@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/LSRobotics/Chinook.svg?branch=master)](https://travis-ci.org/LSRobotics/Chinook)
+![Build Status](https://travis-ci.org/LSRobotics/Chinook.svg?branch=master)
 ![gitter-join-chat](https://gitter.im/LSRobotics/public?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
 <br>
 
