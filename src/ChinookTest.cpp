@@ -6,7 +6,7 @@ const static double global_speed_limit = 0.8;
 
 
 /* utils */
-void reportMsg(string msg){
+void reportMsg(std::string msg){
     FRC_NetworkCommunication_sendConsoleLine(msg.c_str());
 }
 
