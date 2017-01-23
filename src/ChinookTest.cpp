@@ -173,13 +173,13 @@ public:
      * Updates the speed limit
      * @param speedLimit double renews speed limit to a new one
      */
-    void update(double speedLimit) { this->speedLimit = speedLimit; }
+    void Update(double speedLimit) { this->speedLimit = speedLimit; }
 
     /**
      * Change by a speed limit
      * @param speedLimit  double increases/decreases speedLimit
      */
-    void changeBy(double speedLimit) {
+    void ChangeBy(double speedLimit) {
         this->speedLimit += ((this->speedLimit + speedLimit > 1.0000000001) ||
                 (this->speedLimit + speedLimit < -0.0000000001) ) ? 0: speedLimit;
         DriverStation::ReportWarning("\rNewSpeedLimit" + std::to_string(this->speedLimit) + "     ");
@@ -242,8 +242,8 @@ public:
     void TeleopPeriodic() {
        // std::cout << "Chinook: Called TeleopPeriodic" << std::endl;
         setOpState();
-        if(OpState.gpIsRightBumperPressed) drive.changeBy(0.01);
-        if(OpState.gpIsLeftBumperPressed) drive.changeBy(-0.01);
+        if(OpState.gpIsRightBumperPressed) drive.ChangeBy(0.01);
+        if(OpState.gpIsLeftBumperPressed) drive.ChangeBy(-0.01);
         drive.ArcadeDrive(OpState.gpRightStickX, OpState.gpRightStickY);
     }
 
