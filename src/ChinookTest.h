@@ -5,7 +5,7 @@
 #ifndef CHINOOKTEST1_CHINOOKTEST_H
 #define CHINOOKTEST1_CHINOOKTEST_H
 
-#define VERSION 0.5
+#define VERSION 0.6
 
 #include <iostream>
 #include <memory>
