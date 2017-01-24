@@ -10,7 +10,8 @@
 ![chinook_copter](https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/CH-47_Chinook_helicopter_flyby.jpg/1280px-CH-47_Chinook_helicopter_flyby.jpg)
 <br>Source: Wikipedia article: Chinook.
 
-![chinook_wind](https://upload.wikimedia.org/wikipedia/en/1/10/Chinook-arch.JPG)
+![chinook_wind](https://upload.wikimedia.org/wikipedia/commons/4/48/Okanagan-Arch.jpg)
+<br>Chinook arch over Kelowna, BC
 <br>Source: Wikipedia article: Chinook Wind.
 # Chinook
 2017 Robot.
