@@ -23,4 +23,6 @@
 #include "Constant.h"
 #include "Drive.h"
 
+void reportMsg(std::string msg);
+
 #endif /*CHINOOKTEST1_CHINOOKTEST_H*/
