@@ -2,6 +2,6 @@
 #define UTIL_H
 
 #include "ChinookTest.h"
-void ReportMsg(std::String);
+void ReportMsg(std::string);
 
 #endif /* Util.h */
