@@ -1,5 +1,5 @@
-#ifndef DRIVE_HPP
-#define DRIVE_HPP
+#ifndef DRIVE_H
+#define DRIVE_H
 
 class DriveTrain {
 public:
@@ -59,4 +59,4 @@ private:
 
 };
 
-#endif /*drive.hpp*/
+#endif /*drive.h*/
