@@ -1,6 +1,7 @@
 #ifndef DRIVE_H
 #define DRIVE_H
 
+#include "util.h"
 #include "ChinookTest.h"
 class DriveTrain {
 public:
