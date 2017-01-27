@@ -59,6 +59,9 @@ private:
      */
     inline double limitSpeed(double a) { return a/std::abs(a) * (std::abs(a) > speedLimit ? speedLimit : std::abs(a)); }
 
+    inline void reportMsg(std::string msg){
+        FRC_NetworkCommunication_sendConsoleLine(msg.c_str());
+    }
 };
 
 #endif /*drive.h*/
