@@ -43,7 +43,7 @@ public:
     void ChangeBy(double speedLimit) {
         this->speedLimit += ((this->speedLimit + speedLimit > 1.0000000001) ||
                 (this->speedLimit + speedLimit < -0.0000000001) ) ? 0: speedLimit;
-        reportMsg("\rNewSpeedLimit" + std::to_string(this->speedLimit) + "     ");
+        reportMsg("New Speed Limit:" + std::to_string(this->speedLimit));
         std::cout << "New Limit: " << this->speedLimit << std::endl;
     }
 
