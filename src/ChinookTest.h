@@ -20,7 +20,7 @@
 #include "HAL/HAL.h"
 #include "FRC_NetworkCommunication/FRCComm.h"
 
-#include "Util.h"
+#include "util.h"
 #include "Constant.h"
 #include "Drive.h"
 
