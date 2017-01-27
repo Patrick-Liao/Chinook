@@ -57,7 +57,7 @@ private:
      * @param a
      * @return
      */
-    double limitSpeed(double a) { return a/std::abs(a) * (std::abs(a) > speedLimit ? speedLimit : std::abs(a)); }
+    inline double limitSpeed(double a) { return a/std::abs(a) * (std::abs(a) > speedLimit ? speedLimit : std::abs(a)); }
 
 };
 
