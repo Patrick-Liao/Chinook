@@ -20,8 +20,8 @@
 #include "HAL/HAL.h"
 #include "FRC_NetworkCommunication/FRCComm.h"
 
+#include "Util.h"
 #include "Constant.h"
 #include "Drive.h"
-#include "Util.h"
 
 #endif /*CHINOOKTEST1_CHINOOKTEST_H*/
