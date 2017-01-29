@@ -1,6 +1,8 @@
 
-#include "ChinookTest.h"
+#include "Chinook.h"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCDFAInspection"
 /* settings */
 const static double global_speed_limit = 0.8;
 
@@ -8,6 +10,16 @@ const static double global_speed_limit = 0.8;
 /* utils */
 void reportMsg(std::string msg){
     FRC_NetworkCommunication_sendConsoleLine(msg.c_str());
+}
+
+std::vector<double> updateRemoteDriveTrain() {
+    double a = 0.0;
+    std::vector<double > v;
+    RECV(&a, sizeof(double));
+    v.push_back(a);
+    RECV(&a, sizeof(double));
+    v.push_back(a);
+    return v;
 }
 
 enum {
@@ -47,7 +59,8 @@ enum {
     JoystickPort = 3,
     JoystickAButton = 3,
     JoystickYButton = 4,
-    JoystickLeftStickDown = 1
+    JoystickLeftStickDown = 1,
+
 };
 
 struct {
@@ -75,6 +88,8 @@ struct {
     // DPAD
     double gpDpad = -1.0;
 } OpState;
+
+
 
 void setOpState() {
     try {
@@ -220,6 +235,7 @@ public:
      */
     void RobotInit()  {
         std::cout << "Chinook: RobotInit VER " << VERSION << std::endl;
+        accept_init();
     }
 
     /**
@@ -234,6 +250,8 @@ public:
      */
     void AutonomousPeriodic() {
         std::cout << "Chinook: Called AutonomousPeriodic" << std::endl;
+        std::vector<double> v = updateRemoteDriveTrain();
+        reportMsg(v.pop_back() + " " +v.pop_back());
     }
 
     /**
@@ -262,6 +280,9 @@ public:
         std::cout << "Chinook: Called TestPeriodic()\nChinook: TestPeriodic is not implemented." << std::endl;
     }
 
+    void DisabledInit() override {
+        CLOSE();
+    }
 
 private:
 
@@ -270,3 +291,5 @@ private:
 
 
 START_ROBOT_CLASS(Robot)
+
+#pragma clang diagnostic pop
