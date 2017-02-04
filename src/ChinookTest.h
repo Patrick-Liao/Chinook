@@ -20,6 +20,8 @@
 #include "HAL/HAL.h"
 #include "FRC_NetworkCommunication/FRCComm.h"
 
+#include "opState.h"
+
 
 
 #endif /*CHINOOKTEST1_CHINOOKTEST_H*/
